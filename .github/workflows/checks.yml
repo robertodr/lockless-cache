@@ -4,18 +4,25 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+
     steps:
       - uses: actions/checkout@v3
+
+      - name: Get timestamp
+        id: timestamp
+        run: |
+          echo "::set-output name=timestamp::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 
       - name: Install poetry
         run: | 
           pipx install poetry
           poetry --version
-
+          
       # this runs `poetry env use ${{ matrix.python-version }}` for us :)
       - uses: actions/setup-python@v4
         with:
@@ -35,3 +42,9 @@ jobs:
       - name: Test with pytest
         run: |
           poetry run pytest 
+
+      - name: Save generated poetry.lock
+        uses: actions/upload-artifact@v3
+        with:
+          name: poetry_${{ matrix.os }}_${{ matrix.python }}_${{ steps.timestamp.outputs.timestamp }}.lock
+          path: poetry.lock
