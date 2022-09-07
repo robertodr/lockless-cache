@@ -5,11 +5,12 @@ description = ""
 authors = ["Roberto Di Remigio Eikås <roberto@totaltrash.xyz>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
+scipy = "^1.7.3"
 pyscf = { git = "https://github.com/stknecht/pyscf.git", branch = "macosx-workarounds", optional = true}
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2"
+pytest = "^7"
 
 [tool.poetry.extras]
 pyscf = ['pyscf']
