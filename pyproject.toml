@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "lockless-cache"
+version = "0.1.0"
+description = ""
+authors = ["Roberto Di Remigio Eikås <roberto@totaltrash.xyz>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyscf = { git = "https://github.com/stknecht/pyscf.git", branch = "macosx-workarounds", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.extras]
+pyscf = ['pyscf']
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
