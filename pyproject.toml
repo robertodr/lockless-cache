@@ -9,7 +9,7 @@ python = "^3.9"
 pyscf = { git = "https://github.com/stknecht/pyscf.git", branch = "macosx-workarounds", optional = true}
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.2"
 
 [tool.poetry.extras]
 pyscf = ['pyscf']
