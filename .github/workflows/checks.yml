@@ -25,7 +25,7 @@ jobs:
 
       - name: Environment variables to configure PySCF source installation
         if: contains(matrix.os, 'macos')
-        id: cmake_bla_vendor
+        id: pyscf_config
         run: |
           echo "::set-output name=cmake_bla_vendor::'-DBLA_VENDOR=NAS'"
 
@@ -48,7 +48,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          CMAKE_CONFIGURE_ARGS="${{ steps.config.outputs.cmake_bla_vendor }}" poetry install -E pyscf
+          CMAKE_CONFIGURE_ARGS="${{ steps.pyscf_config.outputs.cmake_bla_vendor }}" poetry install -E pyscf
 
       - name: Test with pytest
         run: |
