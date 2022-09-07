@@ -16,7 +16,7 @@ jobs:
       - name: Get timestamp
         id: timestamp
         run: |
-          echo "::set-output name=timestamp::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "::set-output name=timestamp::$(date -u +'%Y-%m-%dT%H-%M-%SZ')"
 
       - name: Install poetry
         run: | 
