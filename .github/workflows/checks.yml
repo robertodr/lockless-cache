@@ -46,5 +46,5 @@ jobs:
       - name: Save generated poetry.lock
         uses: actions/upload-artifact@v3
         with:
-          name: poetry_${{ matrix.os }}_${{ matrix.python }}_${{ steps.timestamp.outputs.timestamp }}.lock
+          name: poetry_${{ matrix.os }}_${{ matrix.python-version }}_${{ steps.timestamp.outputs.timestamp }}.lock
           path: poetry.lock
