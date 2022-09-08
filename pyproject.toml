@@ -6,7 +6,7 @@ authors = ["Roberto Di Remigio Eikås <roberto@totaltrash.xyz>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-scipy = "^1.8"
+scipy = "^1.7"
 pyscf = { git = "https://github.com/stknecht/pyscf.git", branch = "macosx-workarounds", optional = true}
 
 [tool.poetry.dev-dependencies]
