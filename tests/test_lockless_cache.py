@@ -7,3 +7,8 @@ def test_version():
 
 def test_foo():
     assert 3 == (1 + 2)
+
+    
+def test_bar():
+    assert 2 == (1 + 1)
+    
