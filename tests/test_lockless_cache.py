@@ -20,6 +20,7 @@ def test_bar():
     [
         (2, 3, -1),
         (4, 2, 2),
+        (8, -10, 18),
     ],
 )
 def test_sum_two_ints(expected, lhs, rhs):
