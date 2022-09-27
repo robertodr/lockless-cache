@@ -47,7 +47,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          poetry run pytest --junit-xml=pytest.xml --cov=lockless-cache --cov-report=xml:coverage.xml
+          poetry run pytest --junit-xml=pytest.xml --cov=lockless_cache --cov-report=xml:coverage.xml
 
       - name: Save generated poetry.lock
         uses: actions/upload-artifact@v3
