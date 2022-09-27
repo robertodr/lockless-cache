@@ -47,21 +47,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          poetry run pytest --junit-xml=pytest.xml --cov=lockless-cache --cov-report=xml:coverage.xml
-
-      - name: Save generated poetry.lock
-        uses: actions/upload-artifact@v3
-        with:
-          name: poetry_${{ matrix.os }}_${{ matrix.python-version }}_${{ steps.timestamp.outputs.timestamp }}.lock
-          path: poetry.lock
-
-      - name: Upload coverage data to coveralls.io
-        run: |
-          poetry run coveralls --service=github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_FLAG_NAME: ${{ matrix.os }}_${{ matrix.python-version }}
-          COVERALLS_PARALLEL: true
+          poetry run pytest --junit-xml=pytest.xml --cov=lockless_cache --cov-report=xml:coverage.xml
 
       - name: Upload coverage data to coveralls.io
         uses: coverallsapp/github-action@1.1.3
@@ -70,6 +56,12 @@ jobs:
           flag-name: run-${{ matrix.os }}_${{ matrix.python-version }}
           path-to-lcov: coverage.xml
           parallel: true
+
+      - name: Save generated poetry.lock
+        uses: actions/upload-artifact@v3
+        with:
+          name: poetry_${{ matrix.os }}_${{ matrix.python-version }}_${{ steps.timestamp.outputs.timestamp }}.lock
+          path: poetry.lock
 
   coveralls:
     name: Indicate completion to coveralls.io
