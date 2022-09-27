@@ -47,7 +47,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          poetry run pytest 
+          poetry run pytest --junit-xml=pytest.xml --cov=lockless-cache --cov-report=xml:coverage.xml
 
       - name: Save generated poetry.lock
         uses: actions/upload-artifact@v3
@@ -57,7 +57,7 @@ jobs:
 
       - name: Upload coverage data to coveralls.io
         run: |
-          coveralls --service=github
+          poetry run coveralls --service=github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.os }}_${{ matrix.python-version }}
