@@ -11,6 +11,8 @@ pyscf = { git = "https://github.com/stknecht/pyscf.git", branch = "macosx-workar
 
 [tool.poetry.dev-dependencies]
 pytest = "^7"
+pytest-cov = "^3"
+coveralls = "^3"
 
 [tool.poetry.extras]
 pyscf = ['pyscf']

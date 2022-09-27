@@ -54,3 +54,24 @@ jobs:
         with:
           name: poetry_${{ matrix.os }}_${{ matrix.python-version }}_${{ steps.timestamp.outputs.timestamp }}.lock
           path: poetry.lock
+
+      - name: Upload coverage data to coveralls.io
+        run: |
+          coveralls --service=github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_FLAG_NAME: ${{ matrix.os }}_${{ matrix.python-version }}
+          COVERALLS_PARALLEL: true
+
+  coveralls:
+    name: Indicate completion to coveralls.io
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Finished
+        run: |
+          pipx install --upgrade coveralls
+          coveralls --service=github --finish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
