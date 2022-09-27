@@ -71,7 +71,7 @@ jobs:
 
       - name: Finished
         run: |
-          pipx upgrade coveralls
+          pipx install coveralls
           coveralls --service=github --finish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
