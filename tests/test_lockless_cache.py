@@ -1,6 +1,6 @@
 import pytest
 
-from lockless_cache import __version__, sum_two_ints
+from lockless_cache import __version__, sum_two_ints, multiply_two_ints
 
 
 def test_version():
@@ -18,3 +18,13 @@ def test_version():
 )
 def test_sum_two_ints(expected, lhs, rhs):
     assert expected == sum_two_ints(lhs, rhs)
+
+
+@pytest.mark.parametrize(
+    "expected,lhs,rhs",
+    [
+        (2, 2, 1),
+    ],
+)
+def test_multiply_two_ints(expected, lhs, rhs):
+    assert expected == multiply_two_ints(lhs, rhs)
